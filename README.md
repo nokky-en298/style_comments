@@ -1,24 +1,60 @@
-# README
+# DB 設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users table
 
-Things you may want to cover:
+| Column             | Type                | Options                  |
+|--------------------|---------------------|--------------------------|
+| nickname           | string              | null: false              |
+| email              | string              | null: false unique: true |
+| password           | string              | null: false              |
+| age                | string              | null: false              |
+| gender             | string              | null: false              |
+| occupation         | text                | null: false              |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :styles
+- has_many :comments
+- has_many :likes
 
-* Configuration
 
-* Database creation
+## styles table
 
-* Database initialization
+| Column                              | Type       | Options                        |
+|-------------------------------------|------------|--------------------------------|
+| title_id                            | integer    | null: false                    |
+| quality                             | text       | null: false                    |
+| item                                | text       | null: false                    |
+| remark                              | text       | null: false                    |
+| user                                | references | null: false, foreign_key: true |
 
-* How to run the test suite
+### Association
 
-* Services (job queues, cache servers, search engines, etc.)
+- belongs_to :user
+- has_many :comments
+- has_many :likes
 
-* Deployment instructions
+## comments table
 
-* ...
+| Column      | Type       | Options                        |
+|-------------|------------|--------------------------------|
+| content     | text       | null: false                    |
+| user        | references | null: false, foreign_key: true |
+| style       | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :user
+- belongs_to :style
+
+## likes table
+
+| Column      | Type       | Options                        |
+|-------------|------------|--------------------------------|
+| user        | references | null: false, foreign_key: true |
+| style       | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :user
+- belongs_to :style
