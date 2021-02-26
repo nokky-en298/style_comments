@@ -19,7 +19,7 @@
 
 | Column                              | Type       | Options                        |
 |-------------------------------------|------------|--------------------------------|
-| title_id                            | integer    | null: false                    |
+| title                               | string     | null: false                    |
 | quality                             | text       | null: false                    |
 | item                                | text       | null: false                    |
 | remark                              | text       | null: false                    |
