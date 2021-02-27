@@ -1,0 +1,30 @@
+<%= form_with(model: style, local: true) do |form| %>
+  <div class="field">
+    <%= form.label :title, "Styleの名称" %><br />
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :quality, "髪質" %><br />
+    <%= form.text_area :quality, class: :form__text %>
+  </div>
+
+  <div class="field">
+    <%= form.label :item, "使用アイテム" %><br />
+    <%= form.text_area :item, class: :form__text %>
+  </div>
+
+  <div class="field">
+    <%= form.label :remark, "備考" %><br />
+    <%= form.text_area :remark, class: :form__text %>
+  </div>
+
+  <div class="field">
+    <%= form.label :image, "Style" %><br />
+    <%= form.file_field :image %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "保存する", class: :form__btn  %>
+  </div>
+<% end %>

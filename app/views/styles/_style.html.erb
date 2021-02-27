@@ -1,0 +1,12 @@
+<div class="card">
+  <%= link_to root_path(style.id), method: :get do%>
+   <%= image_tag style.image.variant(resize: '300x300'), class: :card__img if style.image.attached? %>
+   <% end %>
+  <div class="card__body">
+    <%= link_to style.title, root_path(style.id), method: :get, class: :card__title %>
+    <p class="card__summary">
+      <%= style.quality %>
+    </p>
+    <%= link_to "by #{style.user.name}", root_path(style.user), class: :card__user %>
+  </div>
+</div>
