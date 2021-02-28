@@ -1,0 +1,34 @@
+<main class="main">
+  <div class="inner">
+    <div class="style__wrapper">
+      <p class="style__hedding">
+        <%= @style.title %>
+      </p>
+      <%= link_to "by #{@style.user.name}", root_path(@style.user_id), class: :style__user %>
+      <% if user_signed_in? && current_user.id == @style.user_id %>
+        <div class="style__manage">
+          <%= link_to "編集する", root_path, method: :get, class: :style__btn %>
+          <%= link_to "削除する", root_path, method: :delete, class: :style__btn %>
+        </div>
+      <% end %>
+      <div class="style__image">
+        <%= image_tag @style.image %>
+      </div>
+      <div class="style__body">
+        <div class="style__detail">
+          <p class="detail__title">髪質</p>
+          <p class="detail__message">
+            <%= @style.quality %>
+          </p>
+        </div>
+        <div class="style__detail">
+          <p class="detail__title">使用したアイテム</p>
+          <p class="detail__message">
+            <%= @style.item %>
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>

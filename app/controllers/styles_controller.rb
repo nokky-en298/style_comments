@@ -7,6 +7,10 @@ class StylesController < ApplicationController
     @style = Style.new
   end
 
+  def show
+    @style = Style.find(params[:id])
+  end
+
   def create
     @style = Style.create(style_params)
     if @style.save
