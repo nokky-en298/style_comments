@@ -1,4 +1,6 @@
 class StylesController < ApplicationController
+  before_action :set_style, except: [:index, :new, :create]
+
   def index
     @styles = Style.includes(:user)
   end
@@ -8,15 +10,17 @@ class StylesController < ApplicationController
   end
 
   def show
-    @style = Style.find(params[:id])
   end
 
   def edit
-    @style = Style.find(params[:id])
+  end
+
+  def destroy
+    @style.destroy
+    redirect_to root_path(@style)
   end
 
   def update
-    @style = Style.find(params[:id])
     if @style.update(style_params)
       redirect_to style_path
     else
@@ -37,5 +41,9 @@ class StylesController < ApplicationController
   private
   def style_params
     params.require(:style).permit(:image, :title, :quality, :item, :remark).merge(user_id: current_user.id)
+  end
+
+  def set_style
+    @style = Style.find(params[:id])
   end
 end
