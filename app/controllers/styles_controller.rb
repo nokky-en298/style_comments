@@ -11,6 +11,19 @@ class StylesController < ApplicationController
     @style = Style.find(params[:id])
   end
 
+  def edit
+    @style = Style.find(params[:id])
+  end
+
+  def update
+    @style = Style.find(params[:id])
+    if @style.update(style_params)
+      redirect_to style_path
+    else
+      render :edit
+    end
+  end
+
   def create
     @style = Style.create(style_params)
     if @style.save
