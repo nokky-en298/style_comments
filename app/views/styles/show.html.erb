@@ -7,7 +7,7 @@
       <%= link_to "by #{@style.user.name}", root_path(@style.user_id), class: :style__user %>
       <% if user_signed_in? && current_user.id == @style.user_id %>
         <div class="style__manage">
-          <%= link_to "編集する", root_path, method: :get, class: :style__btn %>
+          <%= link_to "編集する", edit_style_path(@style.id), method: :get, class: :style__btn %>
           <%= link_to "削除する", root_path, method: :delete, class: :style__btn %>
         </div>
       <% end %>
